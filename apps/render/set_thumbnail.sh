@@ -35,6 +35,6 @@ then
     exit 1
 fi
 
-echo "ffmpeg -i $INPUT -i $THUMBNAIL -map 1 -map 0 -c copy -disposition:0 attached_pic $OUTPUT"
+ffmpeg -i $INPUT -i $THUMBNAIL -map 1 -map 0 -c copy -disposition:0 attached_pic $OUTPUT
 
 exit 0
