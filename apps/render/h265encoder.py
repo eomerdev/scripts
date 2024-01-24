@@ -42,7 +42,7 @@ def make_command():
                        type=is_time_regex, \
                        nargs = 2, \
                        default = [None, None], \
-                       help = "Beginning and end of time interval")
+                       help = "Time interval with START and DURATION")
    parser.add_argument("--crf", \
                        type = is_crf, \
                        default = defaults["crf"], \
@@ -70,7 +70,7 @@ def make_command():
    command.extend(["-i", args["input"]])
 
    if args["time"][1]:
-      command.extend(["-to", args["time"][1]])
+      command.extend(["-t", args["time"][1]])
 
    command.extend(["-c:v", defaults["video_codec"]]);
    command.extend(["-c:a", defaults["audio_codec"]]);
