@@ -22,8 +22,14 @@ defaults = {
 
 def is_time_regex(arg, time=re.compile(r"^[0-9]{2}:[0-9]{2}:[0-9]{2}$")):
     if not time.match(arg):
-        raise argparse.ArgumentTypeError("invalid value")
+       raise argparse.ArgumentTypeError("Invalid value. Use hh:mm:ss format.")
     return arg
+
+def is_crf(arg):
+   crf = int(arg)
+   if crf < 0 or crf > 51:
+      raise argparse.ArgumentTypeError("Invalid value. Use a value between 0 and 51.")
+   return crf
 
 def make_command():
    parser = argparse.ArgumentParser(prog = "h265encoder",
@@ -38,7 +44,7 @@ def make_command():
                        default = [None, None], \
                        help = "Beginning and end of time interval")
    parser.add_argument("--crf", \
-                       type = int, \
+                       type = is_crf, \
                        default = defaults["crf"], \
                        help = "Quality 0-51 (Default {})".format(defaults["crf"]))
    parser.add_argument("--audio-bitrate", \
