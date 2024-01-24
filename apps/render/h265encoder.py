@@ -31,7 +31,7 @@ def is_crf(arg):
       raise argparse.ArgumentTypeError("Invalid value. Use a value between 0 and 51.")
    return crf
 
-def make_command():
+def parse_args():
    parser = argparse.ArgumentParser(prog = "h265encoder",
                                     description = "A H265/HVEC video encoder")
    parser.add_argument("input", \
@@ -58,8 +58,9 @@ def make_command():
                                   "slower", "veryslow", "placebo"], \
                        help = "Compression efficiency. (Default {})".format(defaults["preset"]))
 
-   # From Namespace to Dictionary
-   args = vars(parser.parse_args())
+   return vars(parser.parse_args())
+
+def make_command(args):
    command = ["ffmpeg"]
 
    command.extend(["-loglevel", defaults["loglevel"]])
@@ -101,7 +102,7 @@ def verify_command(command):
    return True
 
 def main():
-   command = make_command()
+   command = make_command(parse_args())
    if not verify_command(command):
       exit(1)
 
