@@ -17,7 +17,7 @@ defaults = {
    "preset": "medium",
    "audio_bitrate": "128k",
    "video_tag": "hvc1",
-   "loglevel": "quiet"
+   "loglevel": "info"
 }
 
 def is_time_regex(arg, time=re.compile(r"^[0-9]{2}:[0-9]{2}:[0-9]{2}$")):
