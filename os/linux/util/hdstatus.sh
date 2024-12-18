@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Generate a block device report
 # Author: eomerdev <eomerdev@gmail.com>
